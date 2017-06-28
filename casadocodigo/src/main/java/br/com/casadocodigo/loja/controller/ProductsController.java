@@ -27,24 +27,19 @@ public class ProductsController {
 	
 	@Autowired
 	private FileSaver fileSaver;
-	
-/*	@InitBinder
-	protected void initBinder(WebDataBinder binder)
-	{
-		binder.setValidator(new ProductValidator());
-	}*/
-	
+		
 	@RequestMapping(method=RequestMethod.POST, name="saveProduct")
-	public ModelAndView save(MultipartFile summaryPath, @Valid Product product,BindingResult bindingResult, RedirectAttributes redirectAttributes)
+	public ModelAndView save(MultipartFile summary, @Valid Product product,BindingResult bindingResult, RedirectAttributes redirectAttributes)
 	{
-		System.out.println(summaryPath.getName() + ";" + summaryPath.getOriginalFilename());
 		
 		if(bindingResult.hasErrors())
 		{
 			return form(product);
 		}
 		
-		String webPath = fileSaver.write("uploaded-images", summaryPath);
+		System.out.println(summary.getName() + ";" + summary.getOriginalFilename());
+		
+		String webPath = fileSaver.write("uploaded-images", summary);
 		product.setSummaryPath(webPath);
 		
 		productDAO.save(product);

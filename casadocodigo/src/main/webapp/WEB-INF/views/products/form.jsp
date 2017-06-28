@@ -48,8 +48,8 @@
 		</c:forEach>
 		
 		<div>
-		<label for="summaryPath">Sumário do livro</label>
-		<form:input path="summaryPath" type="file"/>
+		<label for="summary">Sumario do livro</label>
+		<input type="file" name="summary"/>
 		<form:errors path="summaryPath" />
 		</div>
 
