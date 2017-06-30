@@ -37,4 +37,10 @@ public class ShoppingCartController {
 		ShoppingItem item = new ShoppingItem(product, bookType);
 		return item;
 	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String items()
+	{
+		return "shoppingCart/items";
+	}
 }

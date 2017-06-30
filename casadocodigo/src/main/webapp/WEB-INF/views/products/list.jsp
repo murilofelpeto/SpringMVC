@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Catalogo de produtos</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 </head>
 <body>
 	<table>
@@ -13,10 +14,9 @@
 			<td>Titulo</td>
 			<td>Valores</td>
 		</tr>
-		
 		<c:forEach items="${products}" var="product">
 			<tr>
-				<td>${product.title}</td>
+				<td><a href="${spring:mvcUrl('PC#show').arg(0,product.id).build()}">${product.title}</a></td>
 				<td>
 					<c:forEach items="${product.prices}" var="price">
 						[${price.value} - ${price.bookType}]
@@ -24,6 +24,6 @@
 				</td>
 			</tr>
 		</c:forEach>
-	</table>
+</table>
 </body>
 </html>
