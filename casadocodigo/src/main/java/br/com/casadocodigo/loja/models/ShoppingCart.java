@@ -42,7 +42,7 @@ public class ShoppingCart {
 	
 	public BigDecimal getTotal(){
 		BigDecimal total = BigDecimal.ZERO;
-		//TODO change to reduce?
+		
 		for(ShoppingItem item : items.keySet()){
 			total = total.add(getTotal(item));
 		}
