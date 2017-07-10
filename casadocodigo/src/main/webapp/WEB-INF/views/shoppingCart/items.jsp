@@ -14,6 +14,7 @@
 		$('#checkout').click(function() {
 			_gaq.push([ '_trackPageview', '/checkout/finalizaCompra' ]);
 		});
+
 		$('.book-suggest').click(function() {
 			var book = $(this).data('book');
 			_gaq.push([ '_trackEvent', 'Recomendação', 'Livro', book ]);
@@ -32,13 +33,16 @@
 			var ccb = $(this).attr('href').indexOf("casadocodigo.com.br");
 			if (ccb == -1)
 				ccb = $(this).attr('href').indexOf("localhost");
+
 			return ccb != 7 && ccb != 11;
 		}).click(function(event) {
 			var domain = this.href;
 			domain = domain.substring(7);
 			domain = domain.substring(0, domain.indexOf('/'));
+
 			if (domain.substring(0, 4) == 'www.')
 				domain = domain.substring(4);
+
 			_gaq.push([ '_trackPageview', '/LinkExterno/' + this.href ]);
 		});
 	});
@@ -141,8 +145,7 @@
 		</ul>
 
 		<h2>
-			<a href="http://www.casadocodigo.com.br">Veja todos os livros que
-				publicamos!</a>
+			<a href="http://www.casadocodigo.com.br">Veja todos os livros que publicamos!</a>
 		</h2>
 	</section>
 </jsp:body>	

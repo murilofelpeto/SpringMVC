@@ -45,6 +45,9 @@
 						</li>
 					</c:forEach>
 
+
+
+
 				</ul>
 
 				<input type="submit" class="submit-image icon-basket-alt"
