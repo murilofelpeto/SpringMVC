@@ -1,5 +1,7 @@
 package br.com.casadocodigo.loja.controller;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -76,4 +79,11 @@ public class ProductsController {
 		modelAndView.addObject("product", product);
 		return modelAndView;
 	}
+	
+/*	@RequestMapping(method=RequestMethod.GET, value="json")
+	@ResponseBody
+	public List<Product> listJson()
+	{
+		return productDAO.list();
+	}*/
 }
