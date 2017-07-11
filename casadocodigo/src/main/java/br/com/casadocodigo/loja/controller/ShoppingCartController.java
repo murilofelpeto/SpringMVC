@@ -2,8 +2,10 @@ package br.com.casadocodigo.loja.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.casadocodigo.loja.daos.ProductDAO;
@@ -24,11 +26,11 @@ public class ShoppingCartController {
 	private ShoppingCart shoppingCart;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView add(Integer productId, BookType bookType)
+	public ModelAndView add(Integer productId,@RequestParam BookType bookType)
 	{
 		ShoppingItem item = createItem(productId, bookType);
 		shoppingCart.add(item);
-		return new ModelAndView("redirect:/produtos");
+		return new ModelAndView("redirect:/shopping");
 	}
 	
 	private ShoppingItem createItem(Integer productId, BookType bookType)
@@ -42,5 +44,12 @@ public class ShoppingCartController {
 	public String items()
 	{
 		return "shoppingCart/items";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST,value="/{productId}")
+	public String remove(@PathVariable("productId") Integer productId,BookType bookType)
+	{
+		shoppingCart.remove(createItem(productId, bookType));
+		return "redirect:/shopping";
 	}
 }

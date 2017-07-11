@@ -42,7 +42,6 @@ public class ShoppingCart {
 	
 	public BigDecimal getTotal(){
 		BigDecimal total = BigDecimal.ZERO;
-		
 		for(ShoppingItem item : items.keySet()){
 			total = total.add(getTotal(item));
 		}
@@ -57,5 +56,4 @@ public class ShoppingCart {
 		return items.isEmpty();
 	}
 
-	
 }
